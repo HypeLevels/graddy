@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 import React from 'react';
 import { Text, Input, Layout, Divider, Modal, Card, Icon, Button, ButtonGroup } from '@ui-kitten/components';
 import { supabase } from '../lib/supabase';
@@ -31,7 +31,6 @@ export const NotLogged = () => {
 
       if (error) setError(error.message)
     }
-    setLoading(false)
   }
 
   async function signUpWithEmail() {
@@ -53,8 +52,6 @@ export const NotLogged = () => {
         if (error) setError("An Account already exists with this email")
       }
     }
-
-    setLoading(false)
   }
 
   return (
@@ -136,7 +133,8 @@ const styles = StyleSheet.create({
   },
   divider: {
     backgroundColor: "#8f9bb3",
-    margin: 5
+    margin: 5,
+    width: Dimensions.get("window").width - 75
   },
   buttongroup: {
     margin: 5,
